@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lisa Coombs | Data Analytics Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #2c3e50;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav li {
+            margin: 0 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        section {
+            background: white;
+            margin-bottom: 2rem;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        /* About Section */
+        .about-content {
+            font-size: 1.1rem;
+        }
+
+        .about-content p {
+            margin-bottom: 1rem;
+        }
+
+        .highlight-box {
+            background-color: #f0f7ff;
+            border-left: 4px solid #3498db;
+            padding: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-category {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 6px;
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 0.3rem 0;
+            color: #555;
+        }
+
+        .skill-category li:before {
+            content: "▹ ";
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background-color: #fff;
+            border: 1px solid #e1e4e8;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-image.excel {
+            background: linear-gradient(135deg, #1D6F42 0%, #38A169 100%);
+        }
+
+        .project-image.sql {
+            background: linear-gradient(135deg, #E53E3E 0%, #FC8181 100%);
+        }
+
+        .project-image.python {
+            background: linear-gradient(135deg, #3182CE 0%, #63B3ED 100%);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-card h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .project-card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .project-stats {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            background-color: #f0f7ff;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #2c3e50;
+        }
+
+        .stat strong {
+            color: #667eea;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-secondary {
+            background-color: #95a5a6;
+        }
+
+        .btn-secondary:hover {
+            background-color: #7f8c8d;
+        }
+
+        /* Contact */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+        }
+
+        .contact-item h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Resume Download */
+        .resume-download {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background-color: #f0f7ff;
+            border-radius: 8px;
+        }
+
+        .btn-large {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav li {
+                margin: 0.5rem 0;
+            }
+
+            section {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#resume">Resume</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <h1>Lisa Coombs 👋</h1>
+        <p>Data Analyst & Health Equity Advocate | Transforming Data into Positive Impact</p>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>Welcome! I'm Lisa Coombs, a data analyst passionate about using data to create <strong>positive impact</strong> in the community support space. I bring over 15 years of professional category management experience in the hospitality industry, a knack for problem-solving, and a drive to help organizations make data-informed decisions.</p>
+
+                <div class="highlight-box">
+                    <strong>🔍 Data Enthusiast:</strong> I have a strong foundation in analytics, with expertise in Python, SQL, and data visualization tools such as Tableau. My work focuses on transforming complex data into accessible insights that drive systemic change.
+                </div>
+
+                <p><strong>My Background:</strong> After 15+ years in category management at companies like The Cheesecake Factory, REEF Technology, and The Coffee Bean & Tea Leaf, I'm pivoting my analytical skills into data analytics. My experience includes directing procurement for 200+ products nationwide, leading cross-functional strategies, and delivering $400K in verified savings through data-driven decision making.</p>
+
+                <p><strong>What Drives Me:</strong> I'm excited by opportunities where data supports meaningful change within communities and nonprofits. From analyzing complex datasets like Tulsa property auction data to refining business analytics processes, I focus on making data accessible and actionable. I believe data is more than just numbers—it's a tool for driving social good.</p>
+
+                <div class="highlight-box">
+                    <strong>🎯 Currently Seeking:</strong> I'm looking for full-time Data Analyst positions (remote or in the Simi Valley, CA area) where I can contribute my analytical skills to policy administration or nonprofit organizations. I'm particularly interested in roles focused on health equity, community impact, and social good.
+                </div>
+
+                <p><strong>Beyond Data:</strong> I'm a health equity advocate with firsthand experience navigating complex healthcare systems during breast cancer treatment. This experience deepened my understanding of systemic inequities in women's healthcare access and fuels my passion for using data to create positive change in healthcare and community support sectors.</p>
+
+                <p><strong>My Approach:</strong> Whether working on exploratory data analysis, building visualizations, or creating data-driven recommendations, my goal is to make data understandable and actionable for all stakeholders—driving sustainable, positive change.</p>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <p>Below are data analytics projects from my CareerFoundry coursework, showcasing different aspects of my analytical process from data cleaning and exploration to visualization and insight generation.</p>
+            
+            <div class="projects-grid">
+                <!-- Project 1: GameCo -->
+                <div class="project-card">
+                    <div class="project-image excel">📊</div>
+                    <div class="project-content">
+                        <h3>Video Game Sales Analysis</h3>
+                        <p class="project-meta">Excel | Data Analysis | Business Intelligence</p>
+                        <p>Analyzed over 16,000 records of global video game sales spanning from 1980 to 2020 across three international markets using Excel pivot tables and charts.</p>
+                        <div class="project-stats">
+                            <span class="stat"><strong>16K+</strong> records</span>
+                            <span class="stat"><strong>8B+</strong> units sold</span>
+                            <span class="stat"><strong>40</strong> years data</span>
+                        </div>
+                        <p><strong>Key Insights:</strong> Evaluated genre popularity, competitor performance, and regional trends which uncovered market shifts and storytelling opportunities across the gaming industry.</p>
+                        <div class="project-links">
+                            <a href="project-gameco.html" class="btn">View Case Study</a>
+                            <a href="https://github.com/lcoombs-analytics/GameCo" class="btn btn-secondary" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Rockbuster -->
+                <div class="project-card">
+                    <div class="project-image sql">🎬</div>
+                    <div class="project-content">
+                        <h3>Movie Rental Analysis</h3>
+                        <p class="project-meta">SQL | Tableau | Market Analysis</p>
+                        <p>Analyzed rental and customer data across 550 records spanning 15 global markets and 10 movie genres using SQL and Tableau.</p>
+                        <div class="project-stats">
+                            <span class="stat"><strong>550</strong> records</span>
+                            <span class="stat"><strong>$32K+</strong> revenue</span>
+                            <span class="stat"><strong>15</strong> markets</span>
+                        </div>
+                        <p><strong>Key Insights:</strong> Identified behavior patterns and revenue concentration, uncovering genre and regional trends that supported the company's strategic shift to streaming.</p>
+                        <div class="project-links">
+                            <a href="project-rockbuster.html" class="btn">View Case Study</a>
+                            <a href="https://github.com/lcoombs-analytics/Rockbuster-Stealth-Project-SQL-" class="btn btn-secondary" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Instacart -->
+                <div class="project-card">
+                    <div class="project-image python">🛒</div>
+                    <div class="project-content">
+                        <h3>Grocery Shopping Cart Analysis</h3>
+                        <p class="project-meta">Python | Pandas | Data Visualization</p>
+                        <p>Analyzed customer purchasing behavior across multiple datasets using Python (pandas), joining over 3 million grocery orders with demographic profiles.</p>
+                        <div class="project-stats">
+                            <span class="stat"><strong>3M+</strong> orders</span>
+                            <span class="stat"><strong>21</strong> departments</span>
+                            <span class="stat"><strong>15+</strong> segments</span>
+                        </div>
+                        <p><strong>Key Insights:</strong> Visualized trends with matplotlib and Tableau, identifying peak shopping hours, loyalty patterns, and product preferences across customer profiles to inform targeted marketing strategies.</p>
+                        <div class="project-links">
+                            <a href="project-instacart.html" class="btn">View Case Study</a>
+                            <a href="https://github.com/lcoombs-analytics/Instacart-Project-Python" class="btn btn-secondary" target="_blank">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Skills & Tools</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>💻 Programming Languages</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>SQL</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>📊 Data Manipulation & Analysis</h3>
+                    <ul>
+                        <li>Pandas</li>
+                        <li>NumPy</li>
+                        <li>Excel (Pivot Tables, Charts)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>📈 Data Visualization</h3>
+                    <ul>
+                        <li>Tableau</li>
+                        <li>Matplotlib</li>
+                        <li>Seaborn</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🛠️ Development Tools</h3>
+                    <ul>
+                        <li>Jupyter Notebooks</li>
+                        <li>Git & GitHub</li>
+                        <li>Asana</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🔍 Core Competencies</h3>
+                    <ul>
+                        <li>Research & Analysis</li>
+                        <li>Project Management</li>
+                        <li>Program Development</li>
+                        <li>Data Storytelling</li>
+                        <li>Cross-Functional Collaboration</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Section -->
+        <section id="resume">
+            <h2>Resume</h2>
+            <div class="resume-download">
+                <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">Download my resume to learn more about my experience, projects, and qualifications.</p>
+                <a href="Lisa-Coombs-Resume.pdf" class="btn btn-large" download>📄 Download Resume (PDF)</a>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <p>I'm always open to connecting with fellow data enthusiasts or organizations interested in data-driven solutions. Feel free to reach out to discuss collaboration opportunities, data analytics roles, or community impact projects!</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>📧 Email</h3>
+                    <a href="mailto:lisacoombs818@gmail.com">lisacoombs818@gmail.com</a>
+                </div>
+
+                <div class="contact-item">
+                    <h3>💼 LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/lisa-coombs" target="_blank">linkedin.com/in/lisa-coombs</a>
+                </div>
+
+                <div class="contact-item">
+                    <h3>🐙 GitHub</h3>
+                    <a href="https://github.com/lcoombs-analytics" target="_blank">github.com/lcoombs-analytics</a>
+                </div>
+
+                <div class="contact-item">
+                    <h3>📍 Location</h3>
+                    <p>Simi Valley, CA<br>Open to remote work</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Lisa Coombs | Data Analytics Portfolio</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">Transforming data into positive impact</p>
+    </footer>
+</body>
+</html>
+</html></html>

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Shopping Cart Analysis | Lisa Coombs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        nav {
+            background-color: #2c3e50;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav li {
+            margin: 0 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #3182CE 0%, #63B3ED 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-meta {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .case-study-section {
+            background: white;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: #3182CE;
+            margin: 1.5rem 0 1rem 0;
+            font-size: 1.3rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .highlight-box {
+            background-color: #EBF8FF;
+            border-left: 4px solid #3182CE;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        ul, ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .tools-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tool-badge {
+            background-color: #3182CE;
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #3182CE 0%, #63B3ED 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            margin: 2rem 0;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .metric-card {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #3182CE;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .code-block {
+            background-color: #1a202c;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            margin-right: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-secondary {
+            background-color: #95a5a6;
+        }
+
+        .btn-secondary:hover {
+            background-color: #7f8c8d;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .case-study-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .image-placeholder {
+                height: 250px;
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Grocery Shopping Cart Analysis 🛒</h1>
+        <div class="hero-meta">
+            Python | Pandas | Customer Segmentation | Data Visualization
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <a href="index.html#projects" class="back-link">← Back to Projects</a>
+
+        <!-- Overview -->
+        <div class="case-study-section">
+            <h2>Project Overview</h2>
+            <p>This comprehensive Python-based project analyzed customer purchasing behavior for Instacart, a leading online grocery delivery platform. By joining over 3 million grocery orders with detailed demographic profiles, I uncovered actionable segmentation opportunities and behavioral patterns to inform targeted marketing strategies.</p>
+
+            <div class="highlight-box">
+                <strong>🎯 Business Goal:</strong>
+                Help Instacart understand customer purchasing patterns across different demographics to develop more effective, targeted marketing campaigns and improve customer retention.
+            </div>
+
+            <div class="tools-list">
+                <span class="tool-badge">Python</span>
+                <span class="tool-badge">Pandas</span>
+                <span class="tool-badge">NumPy</span>
+                <span class="tool-badge">Matplotlib</span>
+                <span class="tool-badge">Seaborn</span>
+                <span class="tool-badge">Tableau</span>
+                <span class="tool-badge">Jupyter Notebook</span>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-number">3M+</span>
+                    <div class="metric-label">Orders Analyzed</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">21</span>
+                    <div class="metric-label">Product Departments</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">15+</span>
+                    <div class="metric-label">Customer Segments</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Problem Statement -->
+        <div class="case-study-section">
+            <h2>The Business Challenge</h2>
+            <p>Instacart's marketing and sales teams needed to understand:</p>
+            <ul>
+                <li>What are the busiest days and times for orders to optimize ad scheduling?</li>
+                <li>When do customers spend the most money to target promotional campaigns?</li>
+                <li>Which product departments have the highest frequency of orders?</li>
+                <li>How do customer demographics (age, income, family status) influence purchasing behavior?</li>
+                <li>What are the differences in ordering habits among different customer profiles?</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>Key Question:</strong>
+                How can Instacart use customer data to create targeted marketing campaigns that increase customer engagement and drive sales across different demographic segments?
+            </div>
+        </div>
+
+        <!-- Methodology -->
+        <div class="case-study-section">
+            <h2>My Approach</h2>
+            
+            <h3>1. Data Collection & Integration</h3>
+            <p>The project involved working with multiple large datasets that needed to be carefully integrated:</p>
+            <ul>
+                <li><strong>Orders Data:</strong> 3+ million order records with timestamps and customer IDs</li>
+                <li><strong>Products Data:</strong> Product information across 21 departments</li>
+                <li><strong>Customer Data:</strong> Demographic information including age, income, region, and family status</li>
+                <li><strong>Order Products Data:</strong> Detailed line-item data connecting orders to specific products</li>
+            </ul>
+
+            <div class="code-block">
+# Example: Merging datasets with pandas<br>
+df_merged = pd.merge(orders, customers, on='user_id', how='inner')<br>
+df_final = pd.merge(df_merged, order_products, on='order_id', how='inner')
+            </div>
+
+            <h3>2. Data Cleaning & Preparation</h3>
+            <p>With millions of records, data quality was crucial. I performed extensive cleaning:</p>
+            <ul>
+                <li>Identified and handled missing values across all datasets</li>
+                <li>Removed duplicate records to ensure data integrity</li>
+                <li>Validated data types and converted where necessary</li>
+                <li>Created derived variables (e.g., time of day categories, spending tiers)</li>
+                <li>Standardized categorical variables for consistency</li>
+            </ul>
+
+            <div class="image-placeholder">
+                🧹<br><small style="font-size: 1rem;">Data Cleaning Process</small>
+            </div>
+
+            <h3>3. Exploratory Data Analysis</h3>
+            <p>I conducted comprehensive EDA to understand customer behavior patterns:</p>
+            <ul>
+                <li><strong>Temporal Analysis:</strong> Examined order patterns by hour, day of week, and time since prior order</li>
+                <li><strong>Product Analysis:</strong> Identified most popular departments and products</li>
+                <li><strong>Customer Segmentation:</strong> Analyzed purchasing differences across age groups, income levels, and family status</li>
+                <li><strong>Loyalty Analysis:</strong> Investigated reorder rates and customer retention patterns</li>
+            </ul>
+
+            <div class="image-placeholder">
+                📊<br><small style="font-size: 1rem;">Order Frequency by Hour of Day</small>
+            </div>
+
+            <h3>4. Customer Segmentation</h3>
+            <p>I created detailed customer profiles based on multiple dimensions:</p>
+            <ul>
+                <li><strong>Demographic Segments:</strong> Age ranges, income brackets, family composition</li>
+                <li><strong>Behavioral Segments:</strong> High/medium/low spenders, frequent vs. occasional shoppers</li>
+                <li><strong>Product Preferences:</strong> Department affinities and product category preferences</li>
+            </ul>
+
+            <h3>5. Data Visualization</h3>
+            <p>I created compelling visualizations using matplotlib, seaborn, and Tableau to communicate findings:</p>
+            <ul>
+                <li>Heatmaps showing order volume by day and time</li>
+                <li>Distribution plots for spending patterns across segments</li>
+                <li>Bar charts comparing department popularity</li>
+                <li>Line charts tracking customer loyalty over time</li>
+            </ul>
+
+            <div class="image-placeholder">
+                📈<br><small style="font-size: 1rem;">Customer Segmentation Dashboard</small>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div class="case-study-section">
+            <h2>Key Findings & Insights</h2>
+            
+            <div class="highlight-box">
+                <strong>Finding #1: Peak Shopping Times</strong>
+                Orders peaked between 10am-4pm on weekends, with Saturday and Sunday showing 30% higher order volumes than weekdays. This identified optimal times for promotional campaigns and surge pricing strategies.
+            </div>
+
+            <div class="highlight-box">
+                <strong>Finding #2: Loyalty Patterns</strong>
+                Customers with dependents showed 45% higher reorder rates and spent 25% more per order than single customers, indicating a valuable segment for loyalty program targeting.
+            </div>
+
+            <div class="highlight-box">
+                <strong>Finding #3: Department Preferences</strong>
+                Produce, dairy, and snacks were the top three departments across all segments, but high-income customers showed significantly higher spending in specialty and organic departments.
+            </div>
+
+            <div class="highlight-box">
+                <strong>Finding #4: Age-Based Behavior</strong>
+                Customers aged 35-45 represented the highest value segment, with the largest basket sizes and most frequent ordering patterns, suggesting they should be the primary target for retention campaigns.
+            </div>
+
+            <div class="highlight-box">
+                <strong>Finding #5: Regional Variations</strong>
+                Geographic analysis revealed significant regional differences in product preferences and ordering times, indicating the need for localized marketing strategies.
+            </div>
+
+            <div class="image-placeholder">
+                🎯<br><small style="font-size: 1rem;">Customer Segment Comparison</small>
+            </div>
+        </div>
+
+        <!-- Challenges -->
+        <div class="case-study-section">
+            <h2>Challenges & Solutions</h2>
+            
+            <h3>Challenge 1: Large Dataset Performance</h3>
+            <p><strong>Problem:</strong> Working with 3+ million records caused memory issues and slow processing times in Python.</p>
+            <p><strong>Solution:</strong> Implemented chunked data processing, optimized pandas operations using vectorization, and strategically filtered data to reduce memory footprint by 60%. Used data types optimization (e.g., category dtype for categorical variables).</p>
+
+            <h3>Challenge 2: Missing Data</h3>
+            <p><strong>Problem:</strong> Approximately 10% of customer records had missing demographic information.</p>
+            <p><strong>Solution:</strong> Conducted thorough missing data analysis to understand patterns. For critical variables, created an "Unknown" category rather than dropping records. Documented all assumptions and validated results with sensitivity analysis.</p>
+
+            <h3>Challenge 3: Data Integration Complexity</h3>
+            <p><strong>Problem:</strong> Multiple datasets with different granularities and potential key mismatches.</p>
+            <p><strong>Solution:</strong> Carefully validated merge operations at each step, checking for unexpected duplicates or data loss. Created detailed documentation of merge logic and performed QA checks on record counts.</p>
+
+            <h3>Challenge 4: Customer Segmentation Overlap</h3>
+            <p><strong>Problem:</strong> Some customers fell into multiple behavioral segments, making clean categorization difficult.</p>
+            <p><strong>Solution:</strong> Created hierarchical segmentation logic with clear prioritization rules. Documented overlap cases and their business implications in the final recommendations.</p>
+        </div>
+
+        <!-- Impact -->
+        <div class="case-study-section">
+            <h2>Business Impact & Recommendations</h2>
+            <p>Based on the analysis, I provided actionable recommendations for Instacart's marketing team:</p>
+            
+            <h3>📅 Timing Optimization</h3>
+            <ul>
+                <li>Schedule promotional emails for Friday afternoons to capture weekend shopping surge</li>
+                <li>Adjust ad spending to peak during 10am-4pm window for maximum engagement</li>
+                <li>Implement dynamic pricing during low-traffic hours to boost off-peak orders</li>
+            </ul>
+
+            <h3>👨‍👩‍👧‍👦 Segment-Specific Campaigns</h3>
+            <ul>
+                <li>Create family-focused promotions highlighting bulk purchases and meal planning for customers with dependents</li>
+                <li>Develop premium product recommendations for high-income segments</li>
+                <li>Target young professionals (25-34) with convenience-focused messaging and quick-meal solutions</li>
+            </ul>
+
+            <h3>🛍️ Product Strategy</h3>
+            <ul>
+                <li>Expand organic and specialty offerings in high-income areas</li>
+                <li>Bundle frequently co-purchased items from popular departments</li>
+                <li>Create department-specific promotions based on regional preferences</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>Personal Growth:</strong>
+                This project significantly strengthened my Python skills, particularly in data manipulation with pandas, handling large datasets efficiently, and creating meaningful customer segments. I learned the importance of balancing analytical depth with actionable business recommendations and how to communicate complex findings clearly to non-technical stakeholders.
+            </div>
+
+            <p><strong>What I Would Do Differently:</strong> Given more time, I would implement predictive modeling to forecast future purchasing behavior, conduct more sophisticated cohort analysis to track customer lifecycle patterns, and develop an interactive Tableau dashboard for stakeholders to explore segments dynamically.</p>
+        </div>
+
+        <!-- Technical Details -->
+        <div class="case-study-section">
+            <h2>Technical Approach Highlights</h2>
+            
+            <h3>Python Libraries Used</h3>
+            <div class="code-block">
+import pandas as pd<br>
+import numpy as np<br>
+import matplotlib.pyplot as plt<br>
+import seaborn as sns<br>
+from scipy import stats
+            </div>
+
+            <h3>Key Analysis Techniques</h3>
+            <ul>
+                <li>Data merging and joins using pandas merge functions</li>
+                <li>Groupby operations for aggregated insights</li>
+                <li>Creating derived variables and feature engineering</li>
+                <li>Statistical analysis for segment comparisons</li>
+                <li>Crosstab analysis for multi-dimensional relationships</li>
+                <li>Data visualization with customized charts and formatting</li>
+            </ul>
+        </div>
+
+        <!-- Links -->
+        <div class="case-study-section">
+            <h2>View the Project</h2>
+            <p>Interested in diving deeper into the code, analysis, and visualizations?</p>
+            <a href="https://github.com/lcoombs-analytics/Instacart-Project-Python" class="btn" target="_blank">View on GitHub</a>
+            <a href="index.html#projects" class="btn btn-secondary">Back to Projects</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Lisa Coombs | <a href="index.html" style="color: #3498db;">Return to Portfolio</a></p>
+    </footer>
+</body>
+</html>
+</html>

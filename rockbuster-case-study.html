@@ -1,0 +1,616 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rockbuster Stealth Analysis | Lisa Coombs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        nav {
+            background-color: #2c3e50;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav li {
+            margin: 0 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-meta {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .case-study-section {
+            background: white;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #8B5CF6;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: #8B5CF6;
+            margin: 1.5rem 0 1rem 0;
+            font-size: 1.3rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .highlight-box {
+            background-color: #F3E8FF;
+            border-left: 4px solid #8B5CF6;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        ul, ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .tools-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tool-badge {
+            background-color: #8B5CF6;
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #8B5CF6 0%, #A78BFA 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            margin: 2rem 0;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .metric-card {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #8B5CF6;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .code-block {
+            background-color: #1a202c;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            margin-right: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-secondary {
+            background-color: #95a5a6;
+        }
+
+        .btn-secondary:hover {
+            background-color: #7f8c8d;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .case-study-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .image-placeholder {
+                height: 250px;
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Rockbuster Stealth: Online Video Rental Strategy 🎬</h1>
+        <div class="hero-meta">
+            SQL | PostgreSQL | Tableau | Data-Driven Strategy
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <a href="index.html#projects" class="back-link">← Back to Projects</a>
+
+        <!-- Overview -->
+        <div class="case-study-section">
+            <h2>Project Overview</h2>
+            <p>Rockbuster Stealth LLC, a traditional movie rental company with stores worldwide, faced intense competition from streaming giants like Netflix and Amazon Prime. As their Business Intelligence Data Analyst, I used SQL and Tableau to analyze rental data and provide strategic insights to guide their 2020 transition to an online video rental service.</p>
+
+            <div class="highlight-box">
+                <strong>🎯 Business Goal:</strong>
+                Help Rockbuster's Management Board make data-driven decisions about their online video service launch by analyzing customer distribution, revenue patterns, rental behavior, and identifying high lifetime value customers across global markets.
+            </div>
+
+            <div class="tools-list">
+                <span class="tool-badge">SQL</span>
+                <span class="tool-badge">PostgreSQL</span>
+                <span class="tool-badge">Tableau</span>
+                <span class="tool-badge">Database Design</span>
+                <span class="tool-badge">ERD Analysis</span>
+                <span class="tool-badge">Data Visualization</span>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-number">584</span>
+                    <div class="metric-label">Total Active Customers</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">$61.3K</span>
+                    <div class="metric-label">Total Revenue Analyzed</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">10</span>
+                    <div class="metric-label">Top Markets Identified</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Problem Statement -->
+        <div class="case-study-section">
+            <h2>The Business Challenge</h2>
+            <p>Rockbuster Stealth's Management Board needed urgent answers to critical strategic questions before launching their online service:</p>
+            <ul>
+                <li><strong>Revenue Performance:</strong> Which movies contributed the most and least to revenue gain?</li>
+                <li><strong>Customer Engagement:</strong> What was the average rental duration for all videos?</li>
+                <li><strong>Geographic Distribution:</strong> Which countries are Rockbuster customers based in?</li>
+                <li><strong>High-Value Customers:</strong> Where are customers with high lifetime value located?</li>
+                <li><strong>Regional Variations:</strong> Do sales figures vary significantly between geographic regions?</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>Data Constraints:</strong>
+                The analysis covered a limited window (February 14 to May 14, 2007) with approximately 3MB of data across multiple related tables. Despite this constraint, I extracted meaningful insights to guide strategic planning.
+            </div>
+        </div>
+
+        <!-- Methodology -->
+        <div class="case-study-section">
+            <h2>My Approach</h2>
+            
+            <h3>1. Database Setup & Understanding</h3>
+            <p>I began by setting up the PostgreSQL environment and understanding the data structure:</p>
+            <ul>
+                <li>Installed and configured PostgreSQL database management system</li>
+                <li>Loaded the Rockbuster dataset (3MB+ with multiple related tables)</li>
+                <li>Analyzed the Entity Relationship Diagram (ERD) to understand table relationships</li>
+                <li>Created a comprehensive data dictionary documenting all fields and relationships</li>
+                <li>Identified primary and foreign keys across tables: customer, payment, rental, film, inventory, address, city, country</li>
+            </ul>
+
+            <div style="margin: 2rem 0;">
+                <img src="https://raw.githubusercontent.com/lcoombs-analytics/lcoombs-analytics.github.io/main/images/rockbuster-erd.png" alt="Rockbuster Database ERD" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <p style="text-align: center; margin-top: 1rem; color: #666; font-style: italic;">Entity Relationship Diagram showing database structure and table relationships</p>
+            </div>
+            
+            <div style="margin: 2rem 0;">
+                <img src="https://raw.githubusercontent.com/lcoombs-analytics/lcoombs-analytics.github.io/main/images/rockbuster-data-dictionary.png" alt="Rockbuster Data Dictionary" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <p style="text-align: center; margin-top: 1rem; color: #666; font-style: italic;">Data Dictionary documenting table structures, data types, and descriptions</p>
+            </div>
+
+            <h3>2. Customer Distribution Analysis</h3>
+            <p>I wrote complex SQL queries with multiple INNER JOINs to analyze customer geography:</p>
+            
+            <div class="code-block">
+SELECT D.country, COUNT(A.customer_id) AS customer_count<br>
+FROM customer A<br>
+INNER JOIN address B ON A.address_id = B.address_id<br>
+INNER JOIN city C ON B.city_id = C.city_id<br>
+INNER JOIN country D ON C.country_id = D.country_id<br>
+GROUP BY D.country<br>
+ORDER BY customer_count DESC<br>
+LIMIT 10;
+            </div>
+
+            <p><strong>Key Finding:</strong> India led with 60 customers, followed by China (53) and United States (36). The top 10 countries represented 315 customers—53% of the total customer base.</p>
+
+            <h3>3. Revenue Analysis by Country</h3>
+            <p>I analyzed revenue patterns across geographic regions to identify high-value markets:</p>
+
+            <div class="code-block">
+SELECT e.country, SUM(a.amount) AS total_revenue<br>
+FROM payment a<br>
+INNER JOIN customer b ON a.customer_id = b.customer_id<br>
+INNER JOIN address c ON b.address_id = c.address_id<br>
+INNER JOIN city d ON c.city_id = d.city_id<br>
+INNER JOIN country e ON d.country_id = e.country_id<br>
+GROUP BY e.country<br>
+ORDER BY total_revenue DESC<br>
+LIMIT 10;
+            </div>
+
+            <p><strong>Key Finding:</strong> India generated the highest revenue ($6,035), followed by China ($5,251) and United States ($3,685). The top 3 countries contributed $14,971 (47% of top 10 revenue, 24% of total revenue).</p>
+
+            <div style="margin: 2rem 0;">
+                <img src="https://raw.githubusercontent.com/lcoombs-analytics/lcoombs-analytics.github.io/main/images/rockbuster-revenue-map.png" alt="Revenue by Country Map" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <p style="text-align: center; margin-top: 1rem; color: #666; font-style: italic;">Geographic visualization showing revenue distribution across top 10 countries</p>
+            </div>
+
+            <h3>4. Rental Duration Analysis</h3>
+            <p>I investigated whether rental duration varied by content type to understand customer engagement:</p>
+
+            <div class="code-block">
+-- By Rating<br>
+SELECT D.rating AS Rating,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AVG(B.return_date - B.rental_date) AS avg_rental_duration<br>
+FROM rental B<br>
+INNER JOIN inventory C ON B.inventory_id = C.inventory_id<br>
+INNER JOIN film D ON C.film_id = D.film_id<br>
+GROUP BY D.rating<br>
+ORDER BY avg_rental_duration DESC;<br>
+<br>
+-- By Genre<br>
+SELECT c.name AS Genre,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AVG(r.return_date - r.rental_date) AS avg_rental_duration<br>
+FROM rental r<br>
+INNER JOIN inventory i ON r.inventory_id = i.inventory_id<br>
+INNER JOIN film f ON i.film_id = f.film_id<br>
+INNER JOIN film_category fc ON f.film_id = fc.film_id<br>
+INNER JOIN category c ON fc.category_id = c.category_id<br>
+GROUP BY c.name<br>
+ORDER BY avg_rental_duration DESC;
+            </div>
+
+            <p><strong>Key Finding:</strong> Average rental duration was consistently around 5 days across all ratings and genres, suggesting uniform customer behavior regardless of content type.</p>
+
+            <h3>5. Revenue Performance by Movie Title</h3>
+            <p>I identified top and bottom performing titles to guide content strategy:</p>
+
+            <div class="code-block">
+-- Top 10 Revenue Generating Films<br>
+SELECT D.title,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUM(A.amount) AS Total_Revenue<br>
+FROM film D<br>
+INNER JOIN inventory C ON D.film_id = C.film_id<br>
+INNER JOIN rental B ON C.inventory_id = B.inventory_id<br>
+INNER JOIN payment A ON B.rental_id = A.rental_id<br>
+GROUP BY D.title<br>
+ORDER BY Total_Revenue DESC<br>
+LIMIT 10;
+            </div>
+
+            <p><strong>Top Performers:</strong> Telegraph Voyage ($215.75), Zorro Ark ($199.72), and Wife Turn ($198.73) led revenue generation.</p>
+
+            <div style="margin: 2rem 0;">
+                <img src="https://raw.githubusercontent.com/lcoombs-analytics/lcoombs-analytics.github.io/main/images/rockbuster-top-10-films.png" alt="Top 10 Revenue-Generating Films" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <p style="text-align: center; margin-top: 1rem; color: #666; font-style: italic;">Top 10 movie titles generating the highest revenue, with genre breakdown</p>
+            </div>
+
+            <p><strong>Bottom Performers:</strong> Stallion Sundance ($7.94), Lights Deer ($7.93), and Cruelty Unforgiven ($6.94) generated the least revenue.</p>
+
+            <div style="margin: 2rem 0;">
+                <img src="https://raw.githubusercontent.com/lcoombs-analytics/lcoombs-analytics.github.io/main/images/rockbuster-bottom-10-films.png" alt="Bottom 10 Revenue-Generating Films" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <p style="text-align: center; margin-top: 1rem; color: #666; font-style: italic;">Bottom 10 movie titles with the least revenue, showing genre concentration in Classics and Documentary</p>
+            </div>
+
+            <h3>6. Genre Performance Analysis</h3>
+            <p>I analyzed revenue distribution across Rockbuster's 17 movie genres to identify content priorities:</p>
+
+            <p><strong>Top-Performing Genres:</strong> Sports ($4,892), Sci-Fi ($4,336), and Animation ($4,118) were the top three revenue generators, collectively accounting for $13,473—approximately 22% of total revenue ($61,312). These genres demonstrated consistent customer appeal and should be prioritized for the online platform.</p>
+
+            <div style="margin: 2rem 0;">
+                <img src="https://raw.githubusercontent.com/lcoombs-analytics/lcoombs-analytics.github.io/main/images/rockbuster-genre-revenue.png" alt="Revenue by Genre" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <p style="text-align: center; margin-top: 1rem; color: #666; font-style: italic;">Total revenue distribution across all 16 genres, revealing clear performance tiers</p>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div class="case-study-section">
+            <h2>Key Findings & Insights</h2>
+            
+            <div class="highlight-box">
+                <strong>Finding #1: Customer Concentration in Emerging Markets</strong>
+                India, China, and United States represented 25% (149 of 584) of total customers. However, India's 60 customers alone generated over $6,000 in revenue, demonstrating strong market potential in emerging economies.
+            </div>
+
+            <div class="highlight-box">
+                <strong>Finding #2: Revenue Concentration Patterns</strong>
+                The top 10 countries contributed $31,834 (52% of total $61,312 revenue), while the bottom 3 performers (Indonesia, Turkey, Philippines) generated only $5,071 (8% of total). This concentration indicates where to focus initial launch efforts.
+            </div>
+
+            <div class="highlight-box">
+                <strong>Finding #3: High-Value Countries</strong>
+                Prioritize high revenue generating countries: India, China, and United States. Of the total number of active customers, 584, approximately 25% or 149 customers live in the top 3 countries. A total of 315 customers live in the top 10 countries, which is 54% of the total active customer base at Rockbuster.
+            </div>
+
+            <div class="highlight-box">
+                <strong>Finding #4: Consistent Rental Behavior</strong>
+                The 5-day average rental duration across all genres and ratings suggests customers have predictable viewing habits, which can inform pricing models and content rotation strategies for the online service.
+            </div>
+
+            <div style="margin: 2rem 0;">
+                <img src="https://raw.githubusercontent.com/lcoombs-analytics/lcoombs-analytics.github.io/main/images/rockbuster-genre-revenue.png" alt="Revenue by Genre" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <p style="text-align: center; margin-top: 1rem; color: #666; font-style: italic;">Total revenue distribution across all 17 genres, revealing clear performance tiers</p>
+            </div>
+        </div>
+
+        <!-- Challenges -->
+        <div class="case-study-section">
+            <h2>Challenges & Solutions</h2>
+            
+            <h3>Challenge 1: Limited Time Window</h3>
+            <p><strong>Problem:</strong> Data covered only a 3-month period (Feb-May 2007), making it difficult to identify seasonal trends or annual patterns.</p>
+            <p><strong>Solution:</strong> Focused on relative performance within the available timeframe and clearly documented this limitation in recommendations. Advised management that accessing a full year of current data would enable more robust seasonal analysis and better forecast accuracy.</p>
+
+            <h3>Challenge 2: Complex Multi-Table Joins</h3>
+            <p><strong>Problem:</strong> Extracting customer geography required joining 4 tables (customer → address → city → country), while revenue analysis needed 5 tables (payment → customer → address → city → country).</p>
+            <p><strong>Solution:</strong> Carefully mapped the ERD relationships, validated each join step to prevent data loss, and used INNER JOINs to ensure data integrity. Created reusable query templates for common join patterns to improve efficiency.</p>
+
+            <h3>Challenge 3: Data Quality Validation</h3>
+            <p><strong>Problem:</strong> With multiple related tables, ensuring data consistency and avoiding duplicate records was critical.</p>
+            <p><strong>Solution:</strong> Implemented validation checks using COUNT(DISTINCT) to verify customer and transaction counts at each query stage. Documented all assumptions and validated results against known totals.</p>
+
+            <h3>Challenge 4: Actionable Insight Generation</h3>
+            <p><strong>Problem:</strong> Management needed clear, actionable recommendations, not just data outputs.</p>
+            <p><strong>Solution:</strong> Translated SQL results into business language, created Tableau visualizations for executive presentation, and structured recommendations around specific markets, content titles, and strategic priorities.</p>
+        </div>
+
+        <!-- Impact -->
+        <div class="case-study-section">
+            <h2>Strategic Recommendations & Business Impact</h2>
+            <p>Based on my comprehensive SQL analysis, I provided Rockbuster's Management Board with these actionable recommendations:</p>
+            
+            <h3>🎬 Content Strategy: Prioritize High-Performers</h3>
+            <ul>
+                <li><strong>Launch with Winners:</strong> Feature the 5 top revenue-generating titles (Telegraph Voyage, Zorro Ark, Hustler Party, Harry Idaho, Torque Bound) prominently on the online platform—they drove 51% of top-tier revenue</li>
+                <li><strong>Genre Focus:</strong> Emphasize Comedy and Drama titles, which showed strong combined performance</li>
+                <li><strong>Phase Out Underperformers:</strong> Consider deprioritizing or eliminating Classics and Documentary genres that contributed minimal revenue</li>
+            </ul>
+
+            <h3>🌍 Geographic Market Strategy</h3>
+            <ul>
+                <li><strong>Phased Launch Approach:</strong> Launch first in India, China, and United States—markets with both high customer concentration (25% of base) and revenue generation (24% of total)</li>
+                <li><strong>City-Level Targeting:</strong> Within India, 5 cities generated 70% of country revenue—focus infrastructure and marketing investments in these high-density urban areas</li>
+                <li><strong>Growth Market Development:</strong> Replicate successful strategies from top 3 markets in underperforming regions (Indonesia, Turkey, Philippines) to unlock untapped revenue potential</li>
+            </ul>
+
+            <h3>👥 Customer Engagement & Loyalty</h3>
+            <ul>
+                <li><strong>High-Value Customer Programs:</strong> Implement targeted loyalty programs for customers in top 10 countries (53% of customer base) to maximize retention</li>
+                <li><strong>Lifetime Value Focus:</strong> Develop VIP tiers for high-spending customers identified in the analysis to increase engagement and referrals</li>
+                <li><strong>Regional Personalization:</strong> Create market-specific content recommendations based on observed regional preferences</li>
+            </ul>
+
+            <h3>📊 Data Infrastructure for Future Success</h3>
+            <ul>
+                <li><strong>Expand Data Collection:</strong> Implement systems to capture full-year, current data to identify seasonal trends and improve forecasting accuracy</li>
+                <li><strong>Real-Time Analytics:</strong> Build dashboards to monitor KPIs (customer acquisition, churn, revenue per user) as the online service launches</li>
+                <li><strong>Competitive Intelligence:</strong> Gather competitor pricing, content library, and promotional data from Netflix, Amazon Prime, and regional players</li>
+                <li><strong>Sentiment Analysis:</strong> Collect and analyze customer feedback, reviews, and social media mentions to understand preferences and pain points</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>Expected Business Impact:</strong>
+                These recommendations position Rockbuster to capture 70%+ of revenue potential from proven markets and content, while building infrastructure for long-term competitive advantage in the online video rental space.
+            </div>
+
+            <div class="highlight-box">
+                <strong>Personal Growth:</strong>
+                This project significantly strengthened my SQL proficiency, particularly in multi-table joins, aggregate functions, and translating complex queries into executive-level insights. I learned how to balance analytical rigor with business storytelling, ensuring technical findings drive actionable decisions for C-suite stakeholders.
+            </div>
+
+            <p><strong>What I Would Do Differently:</strong> With additional time and resources, I would implement advanced analytics including customer cohort analysis to track behavior over time, predictive modeling to forecast churn risk, and A/B testing frameworks to optimize pricing strategies for different market segments.</p>
+        </div>
+
+        <!-- Technical Details -->
+        <div class="case-study-section">
+            <h2>Technical Approach Highlights</h2>
+            
+            <h3>SQL Techniques Mastered</h3>
+            <ul>
+                <li><strong>Complex Joins:</strong> INNER JOIN across 5+ tables with proper foreign key relationships</li>
+                <li><strong>Aggregation:</strong> SUM, COUNT, AVG with GROUP BY for revenue and customer metrics</li>
+                <li><strong>Filtering:</strong> WHERE clauses for targeted analysis and data quality checks</li>
+                <li><strong>Sorting:</strong> ORDER BY with DESC for ranking top/bottom performers</li>
+                <li><strong>Limiting Results:</strong> LIMIT for focused top-N analysis</li>
+                <li><strong>Date Calculations:</strong> return_date - rental_date for rental duration metrics</li>
+                <li><strong>Subqueries:</strong> Nested SELECT statements for complex business questions</li>
+            </ul>
+
+            <h3>Sample Queries from Analysis</h3>
+            <div class="code-block">
+-- Customer Distribution by Country (Top 10)<br>
+SELECT D.country, COUNT(A.customer_id) AS customer_count<br>
+FROM customer A<br>
+INNER JOIN address B ON A.address_id = B.address_id<br>
+INNER JOIN city C ON B.city_id = C.city_id<br>
+INNER JOIN country D ON C.country_id = D.country_id<br>
+GROUP BY D.country<br>
+ORDER BY customer_count DESC<br>
+LIMIT 10;<br>
+<br>
+-- Total Revenue by Country (Top 10)<br>
+SELECT e.country, SUM(a.amount) AS total_revenue<br>
+FROM payment a<br>
+INNER JOIN customer b ON a.customer_id = b.customer_id<br>
+INNER JOIN address c ON b.address_id = c.address_id<br>
+INNER JOIN city d ON c.city_id = d.city_id<br>
+INNER JOIN country e ON d.country_id = e.country_id<br>
+GROUP BY e.country<br>
+ORDER BY total_revenue DESC<br>
+LIMIT 10;
+            </div>
+
+            <h3>Visualization Tools</h3>
+            <ul>
+                <li><strong>Tableau Public:</strong> Created interactive dashboards showing geographic revenue distribution, top performing titles, and customer concentration</li>
+                <li><strong>Executive Presentation:</strong> Designed clear, visually compelling slides with key metrics and strategic recommendations</li>
+                <li><strong>Data Dictionary:</strong> Documented database structure in Excel for technical colleagues</li>
+            </ul>
+        </div>
+
+        <!-- Links -->
+        <div class="case-study-section">
+            <h2>View the Project</h2>
+            <p>Interested in diving deeper into the SQL queries, analysis, and visualizations?</p>
+            <a href="https://github.com/lcoombs-analytics/Rockbuster-Project-SQL" class="btn" target="_blank">View on GitHub</a>
+            <a href="https://public.tableau.com/app/profile/lisa.coombs8543/viz/Ex3_10_Rockbuster_Stealth_Data_Analysis_ProjectV2/CustomerDistribution" class="btn" target="_blank">View in Tableau</a>
+            <a href="index.html#projects" class="btn btn-secondary">Back to Projects</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Lisa Coombs | <a href="index.html" style="color: #3498db;">Return to Portfolio</a></p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameCo Video Game Analysis | Lisa Coombs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        nav {
+            background-color: #2c3e50;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav li {
+            margin: 0 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #3498db;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-meta {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .case-study-section {
+            background: white;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            border-bottom: 3px solid #F59E0B;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: #F59E0B;
+            margin: 1.5rem 0 1rem 0;
+            font-size: 1.3rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .highlight-box {
+            background-color: #FEF3C7;
+            border-left: 4px solid #F59E0B;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        ul, ol {
+            margin: 1rem 0 1rem 2rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .tools-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tool-badge {
+            background-color: #F59E0B;
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .metric-card {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #F59E0B;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            margin-right: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-secondary {
+            background-color: #95a5a6;
+        }
+
+        .btn-secondary:hover {
+            background-color: #7f8c8d;
+        }
+
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .case-study-section {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>GameCo Video Game Market Analysis 🎮</h1>
+        <div class="hero-meta">
+            Excel | Market Research | Competitive Analysis | Data Storytelling
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <a href="index.html#projects" class="back-link">← Back to Projects</a>
+
+        <!-- Overview -->
+        <div class="case-study-section">
+            <h2>Project Overview</h2>
+            <p>GameCo, a fictional video game company, needed data-driven insights to guide their new game development strategy. Using historical sales data from VGChartz spanning 1980-2020, I conducted a comprehensive market analysis examining 16,000+ game sales records across multiple genres, platforms, and global markets to identify trends, competitor positioning, and strategic opportunities.</p>
+
+            <div class="highlight-box">
+                <strong>🎯 Business Goal:</strong>
+                Provide GameCo executives with actionable insights about market trends, genre popularity, competitive landscape, and regional performance to inform strategic decisions about new game development and market entry.
+            </div>
+
+            <div class="tools-list">
+                <span class="tool-badge">Microsoft Excel</span>
+                <span class="tool-badge">Pivot Tables</span>
+                <span class="tool-badge">Data Visualization</span>
+                <span class="tool-badge">Statistical Analysis</span>
+                <span class="tool-badge">Market Research</span>
+                <span class="tool-badge">Executive Presentations</span>
+            </div>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-number">16K+</span>
+                    <div class="metric-label">Games Analyzed</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">40</span>
+                    <div class="metric-label">Years of Data (1980-2020)</div>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-number">4</span>
+                    <div class="metric-label">Global Markets</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Problem Statement -->
+        <div class="case-study-section">
+            <h2>The Business Challenge</h2>
+            <p>GameCo's executive team needed to answer critical strategic questions before committing resources to new game development:</p>
+            <ul>
+                <li><strong>Genre Strategy:</strong> Are certain game genres (Action, Sports, Adventure) more popular than others, and which should we prioritize?</li>
+                <li><strong>Competitive Landscape:</strong> Who are GameCo's main competitors in specific markets, and what are their strengths?</li>
+                <li><strong>Platform Decisions:</strong> Which gaming platforms (PlayStation, Xbox, Nintendo, PC) offer the best market opportunity?</li>
+                <li><strong>Temporal Trends:</strong> How has game popularity changed over time, and what does that signal for the future?</li>
+                <li><strong>Regional Variations:</strong> How do sales patterns differ across North America, Europe, Japan, and other markets?</li>
+            </ul>
+
+            <div class="highlight-box">
+                <strong>Stakeholder Needs:</strong>
+                The VP of Marketing needed genre and platform insights, the CFO required competitor benchmarking and market share analysis, and the SVP of Sales wanted regional trend data to inform go-to-market strategies.
+            </div>
+        </div>
+
+        <!-- Methodology -->
+        <div class="case-study-section">
+            <h2>My Approach</h2>
+            
+            <h3>1. Data Exploration & Understanding</h3>
+            <p>I began by thoroughly examining the VGChartz dataset:</p>
+            <ul>
+                <li>Assessed data dimensions: 16,000+ games with 11 variables including genre, platform, publisher, and year</li>
+                <li>Understood business context: games with over 10,000 units sold globally</li>
+                <li>Documented potential biases: only commercially successful titles included; excluded financial figures and digital-only games</li>
+                <li>Noted time coverage: sales data spans from 1980 to 2020</li>
+                <li>Clarified units: sales figures represent millions of units sold (e.g., "1.2" = 1.2 million copies)</li>
+                <li>Mapped regional sales markets: North America, Europe, Japan, and "Other" markets</li>
+            </ul>
+
+            <div style="margin: 2rem 0;">
+                <img src="https://raw.githubusercontent.com/lcoombs-analytics/lcoombs-analytics.github.io/main/images/gameco-data-structure-review.png" alt="GameCo Data Structure" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <p style="text-align: center; margin-top: 1rem; color: #666; font-style: italic;">Data structure review showing variables and data types</p>
+            </div>
+
+            <h3>2. Data Cleaning & Quality Assurance</h3>
+            <p>I performed rigorous data cleaning to ensure analysis accuracy:</p>
+            <ul>
+                <li>Reviewed for duplicate records and confirmed no true duplicates (identical across all columns) were present</li>
+                <li>Handled missing values in publisher and year fields</li>
+                <li>Standardized genre and platform naming conventions</li>
+                <li>Documented cleaning decisions for reproducibility</li>
+            </ul>
+
+            <h3>3. Descriptive Analysis with Pivot Tables</h3>
+            <p>I leveraged Excel's analytical capabilities to uncover patterns:</p>
+            <ul>
+                <li><strong>Genre Analysis:</strong> Summarized sales by genre to identify top performers</li>
+                <li><strong>Platform Trends:</strong> Compared sales across gaming platforms over time</li>
+                <li><strong>Regional Breakdowns:</strong> Analyzed geographic sales distributions</li>
+                <li><strong>Temporal Analysis:</strong> Tracked genre popularity changes across decades</li>
+            </ul>
+
+            <div style="margin: 2rem 0;">
+                <img src="https://raw.githubusercontent.com/lcoombs-analytics/lcoombs-analytics.github.io/main/images/gameco-pivot-table-genre.png" alt="Pivot Table Genre Analysis" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <p style="text-align: center; margin-top: 1rem; color: #666; font-style: italic;">Pivot table showing genre sales breakdown by market</p>
+            </div>
+
+            <h3>4. Statistical Analysis</h3>
+            <p>I calculated key metrics to support business decisions:</p>
+            <ul>
+                <li>Summary statistics: mean, median, mode, quartiles for sales by market</li>
+                <li>Market share calculations for top genres</li>
+                <li>Distribution analysis to identify outliers and patterns</li>
+            </ul>
+
+            <h3>5. Data Visualization & Insight Communication</h3>
+            <p>I created clear, compelling visualizations tailored to each stakeholder:</p>
+            <ul>
+                <li><strong>Bar Charts:</strong> Comparing genre and platform performance</li>
+                <li><strong>Line Charts:</strong> Showing trends over time and lifecycle analysis</li>
+                <li><strong>Box Plots:</strong> Displaying sales distributions and identifying outliers</li>
+            </ul>
+
+            <div style="margin: 2rem 0;">
+                <img src="https://raw.githubusercontent.com/lcoombs-analytics/lcoombs-analytics.github.io/main/images/gameco-sales-trends-temporal.png" alt="Sales Trends Over Time" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <p style="text-align: center; margin-top: 1rem; color: #666; font-style: italic;">Temporal analysis showing game sales trends from 1980-2020</p>
+            </div>
+
+            <h3>6. Executive Storytelling</h3>
+            <p>I crafted a compelling narrative for the executive presentation:</p>
+            <ul>
+                <li>Framed analysis within business context and strategic objectives</li>
+                <li>Prioritized insights by stakeholder relevance and impact</li>
+                <li>Used consistent formatting and professional design principles</li>
+                <li>Included clear recommendations with supporting evidence</li>
+            </ul>
+        </div>
+
+        <!-- Results -->
+        <div class="case-study-section">
+            <h2>Key Findings & Insights</h2>
+            
+            <div class="highlight-box">
+                <strong>Finding #1: Genre Dominance and Saturation</strong>
+                Action, Shooter, and Sports games accounted for the highest global sales, especially in North America and Europe. However, Sports games declined 8% annually from 2010-2016, and Action/Shooter genres peaked in 2008-2010, suggesting market saturation and the need to diversify genre investments.
+            </div>
+
+            <div class="highlight-box">
+                <strong>Finding #2: Platform Lifecycle and Regional Console Preferences</strong>
+                Console sales follow predictable 5-7 year cycles, with PlayStation consistently ranking in the top three across all regions. PS4 and Xbox One dominate in North America and Europe, while Nintendo 3DS and PS4 lead in Japan, indicating region-specific platform strategies are essential.
+            </div>
+
+            <div class="highlight-box">
+                <strong>Finding #3: Regional Genre Preferences</strong>
+                North America shows strong preference for Action and Shooter games (over 50% of genre sales). Europe favors Sports and Racing genres. Japan's Role-Playing games account for nearly 38% of genre sales, highlighting the importance of localized development.
+            </div>
+
+            <div class="highlight-box">
+                <strong>Finding #4: Market Shift to Digital Distribution</strong>
+                Physical game sales declined 30% by 2016, driven by mobile gaming, online multiplayer, and 5G infrastructure. This shift accelerated post-2010, reinforcing the need for digital-first publishing strategies.
+            </div>
+
+            <div class="highlight-box">
+                <strong>Finding #5: Emerging Genre Opportunities</strong>
+                Role-Playing and Strategy games grew 15% year-over-year from 2010-2016, outperforming traditional genres in growth. These genres align with consumer interest in complex, story-driven, and cognitively engaging experiences.
+            </div>
+
+            <div class="highlight-box">
+                <strong>Finding #6: Competitive Landscape and Indie Growth</strong>
+                Nintendo, EA, and Activision held 35% market share, but indie and digital-first publishers showed the fastest growth from 2012-2016. This trend suggests opportunities for partnerships, acquisitions, or platform support for emerging studios.
+            </div>
+
+            <div style="margin: 2rem 0;">
+                <img src="https://raw.githubusercontent.com/lcoombs-analytics/lcoombs-analytics.github.io/main/images/gameco-genre-by-market.png" alt="Genre Sales by Market" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <p style="text-align: center; margin-top: 1rem; color: #666; font-style: italic;">Competitive landscape showing genre performance across global markets</p>
+            </div>
+        </div>
+
+        <!-- Challenges -->
+        <div class="case-study-section">
+            <h2>Challenges & Solutions</h2>
+            
+            <h3>Challenge 1: Sales-Driven Data Bias</h3>
+            <p><strong>Problem:</strong> The VGChartz dataset only includes games with over 10,000 units sold, excluding indie, educational, and niche titles—especially those with cognitive or social impact.</p>
+            <p><strong>Solution:</strong> Recommended avoiding overgeneralization and proposed supplementary research into underrepresented genres and platforms to surface emerging trends and inclusive innovation.</p>
+
+            <h3>Challenge 2: Outdated Market Snapshot</h3>
+            <p><strong>Problem:</strong> The dataset ends in 2020, missing recent shifts in mobile gaming, esports, and streaming—especially formats popular among women, older adults, and global audiences.</p>
+            <p><strong>Solution:</strong> Recommended focusing on enduring genre and regional trends while advising executives to pursue updated market research. This ensures future strategy reflects current player behavior and platform engagement.</p>
+
+            <h3>Challenge 3: Regional Genre Misalignment</h3>
+            <p><strong>Problem:</strong> GameCo's initial strategy prioritized high-grossing markets without accounting for genre preferences by region, risking inefficient allocation of development funds.</p>
+            <p><strong>Solution:</strong> Revised the funding strategy to align genre development with regional demand:</p>
+            <ul>
+                <li>Shooter and Action for North America</li>
+                <li>Racing and Shooter for Europe</li>
+                <li>Role-Playing for Japan</li>
+            </ul>
+            <p>This targeted approach supports revenue growth and player satisfaction.</p>
+
+            <h3>Challenge 4: Overlooked Cognitive Value in Low-Sales Genres</h3>
+            <p><strong>Problem:</strong> Puzzle and Strategy games had the lowest sales across all markets, leading to underinvestment despite their cognitive benefits.</p>
+            <p><strong>Solution:</strong> Proposed allocating 25% of marketing funds to these genres, emphasizing their value across age groups—from memory enhancement in older adults to problem-solving in children. Also suggested partnerships with school districts and organizations like the Dementia Society of America to expand reach and impact.</p>
+        </div>
+
+        <!-- Impact -->
+        <div class="case-study-section">
+            <h2>Business Impact & Strategic Recommendations</h2>
+            
+            <h3>🎯 Genre & Platform Strategy</h3>
+            <ul>
+                <li><strong>Diversify Beyond Saturated Genres:</strong> While Action games remain popular, invest in emerging genres (Role-Playing, Strategy) showing consistent growth and less competitive intensity</li>
+                <li><strong>Cognitive Value Investment:</strong> Strategy and Puzzle games had the lowest sales but were recommended for 25% of future investment due to cognitive benefits across age groups</li>
+                <li><strong>Target Platforms:</strong> Game development should target PlayStation PS4, Microsoft Xbox One, and Nintendo 3DS platforms based on regional preferences</li>
+            </ul>
+
+            <h3>🌍 Regional Market Approach</h3>
+            <ul>
+                <li><strong>North America:</strong> Focus on Shooter and Action genres for PS4 and Xbox One</li>
+                <li><strong>Europe:</strong> Focus on Racing and Shooter genres for PS4 and Xbox One</li>
+                <li><strong>Japan:</strong> Focus on Role-Playing genre for PlayStation and Nintendo 3DS</li>
+                <li><strong>Marketing Partnerships:</strong> Recommended partnerships with school districts and organizations like the Dementia Society of America to promote Puzzle and Strategy games</li>
+            </ul>
+
+            <h3>🏆 Competitive Positioning</h3>
+            <ul>
+                <li><strong>Established Players:</strong> Sony and Nintendo continue to dominate the Japanese market</li>
+                <li><strong>Digital Shift:</strong> VGChartz no longer estimates software sales post-2018 due to digital market share growth</li>
+                <li><strong>Indie Opportunity:</strong> Partner with or acquire high-performing indie studios to access emerging talent and innovative game concepts</li>
+            </ul>
+
+            <h3>📊 Data-Driven Development</h3>
+            <ul>
+                <li><strong>Ongoing Research:</strong> Establish continuous market monitoring to track genre trends, platform adoption, and competitive moves in real-time</li>
+                <li><strong>Supplementary Data:</strong> Pursue updated market research on mobile gaming, esports, and streaming to complement historical analysis</li>
+                <li><strong>Portfolio Balance:</strong> Maintain a balanced portfolio with proven genres (steady revenue) and experimental titles (growth opportunities)</li>
+            </ul>
+
+            <div style="margin: 2rem 0;">
+                <img src="https://raw.githubusercontent.com/lcoombs-analytics/lcoombs-analytics.github.io/main/images/gameco-platform-sales-market.png" alt="Platform Sales by Market" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <p style="text-align: center; margin-top: 1rem; color: #666; font-style: italic;">Platform performance across regional markets guiding strategic recommendations</p>
+            </div>
+
+            <div class="highlight-box">
+                <strong>Personal Growth:</strong>
+                This project strengthened my Excel proficiency, particularly in pivot table mastery, complex visualization design, and translating raw data into executive-ready insights. I learned how to balance analytical rigor with storytelling simplicity, ensuring technical findings resonate with C-level stakeholders.
+            </div>
+
+            <p><strong>What I Would Do Differently:</strong> With additional resources, I would supplement the VGChartz data with Steam, mobile app store, and esports viewership data to capture the full gaming ecosystem. I'd also conduct primary research (surveys, focus groups) with gamers to understand preference drivers beyond sales figures.</p>
+        </div>
+
+        <!-- Technical Details -->
+        <div class="case-study-section">
+            <h2>Technical Approach Highlights</h2>
+            
+            <h3>Excel Analysis Techniques Used</h3>
+            <ul>
+                <li><strong>Pivot Tables:</strong> Multi-dimensional analysis with filters, slicers, and calculated fields</li>
+                <li><strong>Data Validation:</strong> Ensuring data integrity through conditional formatting and error checking</li>
+                <li><strong>Statistical Functions:</strong> MEAN, MEDIAN, MODE, RANGE, IQR for distribution analysis</li>
+            </ul>
+
+            <h3>Visualization Best Practices</h3>
+            <ul>
+                <li>Clear, descriptive titles and axis labels</li>
+                <li>Consistent color schemes aligned with GameCo branding</li>
+                <li>Appropriate chart types for different data relationships</li>
+                <li>Strategic use of gridlines and data labels</li>
+                <li>Professional formatting suitable for executive presentations</li>
+                <li>Accessible design with high contrast and legible fonts</li>
+            </ul>
+
+            <h3>Analysis Workflow</h3>
+            <ol>
+                <li><strong>Data Import:</strong> Loaded VGChartz CSV into Excel workbook</li>
+                <li><strong>Quality Check:</strong> Validated completeness, removed duplicates, standardized formats</li>
+                <li><strong>Exploratory Analysis:</strong> Created initial pivot tables to understand distributions</li>
+                <li><strong>Visualization:</strong> Designed charts to communicate key insights</li>
+                <li><strong>Presentation:</strong> Compiled executive summary with recommendations</li>
+            </ol>
+        </div>
+
+        <!-- Links -->
+        <div class="case-study-section">
+            <h2>View the Project</h2>
+            <p>Interested in diving deeper into the analysis, visualizations, and recommendations?</p>
+            <a href="https://github.com/lcoombs-analytics/GameCo" class="btn" target="_blank">View on GitHub</a>
+            <a href="index.html#projects" class="btn btn-secondary">Back to Projects</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Lisa Coombs | <a href="index.html" style="color: #3498db;">Return to Portfolio</a></p>
+    </footer>
+</body>
+</html>

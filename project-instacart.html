@@ -147,19 +147,6 @@
             font-size: 0.9rem;
         }
 
-        .image-placeholder {
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(135deg, #3182CE 0%, #63B3ED 100%);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 4rem;
-            margin: 2rem 0;
-        }
-
         .metrics-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -237,11 +224,6 @@
 
             .case-study-section {
                 padding: 2rem 1.5rem;
-            }
-
-            .image-placeholder {
-                height: 250px;
-                font-size: 2rem;
             }
         }
     </style>
@@ -352,8 +334,9 @@ df_final = pd.merge(df_merged, order_products, on='order_id', how='inner')
                 <li>Standardized categorical variables for consistency</li>
             </ul>
 
-            <div class="image-placeholder">
-                🧹<br><small style="font-size: 1rem;">Data Cleaning Process</small>
+            <div style="margin: 2rem 0;">
+                <img src="Images/instacart-change-data-type.png" alt="Data Type Changes" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <p style="text-align: center; margin-top: 1rem; color: #666; font-style: italic;">Data cleaning process showing data type conversions</p>
             </div>
 
             <h3>3. Exploratory Data Analysis</h3>
@@ -365,8 +348,9 @@ df_final = pd.merge(df_merged, order_products, on='order_id', how='inner')
                 <li><strong>Loyalty Analysis:</strong> Investigated reorder rates and customer retention patterns</li>
             </ul>
 
-            <div class="image-placeholder">
-                📊<br><small style="font-size: 1rem;">Order Frequency by Hour of Day</small>
+            <div style="margin: 2rem 0;">
+                <img src="Images/order-frequency-hour-day.png" alt="Order Frequency by Hour of Day" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <p style="text-align: center; margin-top: 1rem; color: #666; font-style: italic;">Order frequency distribution by hour of day showing peak shopping times</p>
             </div>
 
             <h3>4. Customer Segmentation</h3>
@@ -377,6 +361,11 @@ df_final = pd.merge(df_merged, order_products, on='order_id', how='inner')
                 <li><strong>Product Preferences:</strong> Department affinities and product category preferences</li>
             </ul>
 
+            <div style="margin: 2rem 0;">
+                <img src="Images/instacart-customer-seg-age.png" alt="Customer Segmentation by Age" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <p style="text-align: center; margin-top: 1rem; color: #666; font-style: italic;">Customer segmentation analysis by age groups</p>
+            </div>
+
             <h3>5. Data Visualization</h3>
             <p>I created compelling visualizations using matplotlib, seaborn, and Tableau to communicate findings:</p>
             <ul>
@@ -386,8 +375,9 @@ df_final = pd.merge(df_merged, order_products, on='order_id', how='inner')
                 <li>Line charts tracking customer loyalty over time</li>
             </ul>
 
-            <div class="image-placeholder">
-                📈<br><small style="font-size: 1rem;">Customer Segmentation Dashboard</small>
+            <div style="margin: 2rem 0;">
+                <img src="Images/instacart-family-status-orders.png" alt="Orders by Family Status" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <p style="text-align: center; margin-top: 1rem; color: #666; font-style: italic;">Comparison of ordering patterns across different family status segments</p>
             </div>
         </div>
 
@@ -420,8 +410,9 @@ df_final = pd.merge(df_merged, order_products, on='order_id', how='inner')
                 Geographic analysis revealed significant regional differences in product preferences and ordering times, indicating the need for localized marketing strategies.
             </div>
 
-            <div class="image-placeholder">
-                🎯<br><small style="font-size: 1rem;">Customer Segment Comparison</small>
+            <div style="margin: 2rem 0;">
+                <img src="Images/instacart-transpose-data.png" alt="Transposed Data Analysis" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <p style="text-align: center; margin-top: 1rem; color: #666; font-style: italic;">Data transformation techniques for customer segment comparison</p>
             </div>
         </div>
 
@@ -518,5 +509,4 @@ from scipy import stats
         <p>&copy; 2025 Lisa Coombs | <a href="index.html" style="color: #3498db;">Return to Portfolio</a></p>
     </footer>
 </body>
-</html>
 </html>
